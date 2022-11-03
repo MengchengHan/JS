@@ -1,0 +1,29 @@
+body{
+    font-family:'Courier New', Courier, monospace;
+    font-size: 20px;
+
+    background-color: rgb(30,35,35);
+}
+
+table {
+    text-align: center;
+    table-layout: fixed; 
+    width: 20%;
+}
+
+tr {
+    padding: 20px;
+    color: white;
+}
+
+td {
+    padding: 10px;
+    width: 25% ;
+}
+
+button{
+    padding: 1px;
+    background-color: rgb(30,35,35);
+    border: 0;
+    color: white;
+}
