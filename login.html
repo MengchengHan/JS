@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form name="login">
+        <label for="user">Usuario:</label>
+        <input type="text" name="usuario" id="usuario">
+        <br>
+        <label for="pass">Contraseña:</label>
+        <input type="password" name="contra" id="contra">
+        <br>
+        <input type="button" value="Enviar" onclick="todo()">
+        <br>
+    </form>
+
+    <script>
+
+        function todo() {
+            let usuario = document.getElementById('usuario').value;
+            let contra = document.getElementById('contra').value;
+
+            function NumText(char) {
+                var filtro = '1234567890';
+                var array = filtro.split('');
+                return array.includes(char);
+            }
+
+            function comprobar(string) {
+                var boo = false;
+                for (var i = 0; i < string.length; i++) {
+                    boo = NumText(string.charAt(i));
+                }
+                return boo;
+            }
+
+            //console.log(comprobar(usuario) && comprobar(contra));
+
+            if (!comprobar(usuario) || !comprobar(contra)) {
+                alert('Caracteres no permitidos encontrados');
+            } else {
+                alert('Lo has logrado');
+            }
+        }
+    </script>
+</body>
+
+</html>
