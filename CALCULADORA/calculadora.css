@@ -1,0 +1,44 @@
+#container {
+    display: flex;
+    margin: 35%;
+    justify-content: center;
+}
+
+.calculadora {
+    width: 270px;
+    text-align: center;
+}
+
+#textoPantalla {
+    width: inherit;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    border: 1px solid black;
+    text-align: right;
+    position: relative;
+    margin: auto;
+    padding-top: 25px;
+    background-color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    overflow: hidden;
+    font-size: 25px;
+}
+
+.calculadora [type=button] {
+    font-size: 20px;
+    width: 50px;
+    height: 50px;
+    padding: 0;
+    border-radius: 30px;
+    background: rgb(227, 227, 227);;
+}
+
+.calculadora input.largo {
+    width: 31.5%;
+}
+
+.calculadora input:active {
+    background:rgb(185, 185, 185);
+}
