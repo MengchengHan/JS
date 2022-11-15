@@ -53,6 +53,9 @@
                 var boo = false;
 
                 for (var i = 0; i < string.length; i++) {
+                    if (boo) {
+                        return boo;
+                    }
                     switch (num) {
                         case 0:
                             boo = lowerCase(string.charAt(i));
