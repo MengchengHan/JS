@@ -16,38 +16,47 @@
         <label for="pass">Contraseña:</label>
         <input type="password" name="contra" id="contra">
         <br>
-        <input type="button" value="Enviar" onclick="todo()">
+        <input type="button" value="Enviar" onclick="main()">
         <br>
     </form>
 
     <script>
 
-        function todo() {
+        function main() {
             let usuario = document.getElementById('usuario').value;
             let contra = document.getElementById('contra').value;
 
-            function NumText(char) {
-                var filtro = 'qwertyuiopasdfghjklñzxcvbnm1234567890._\'\"\\';
+            function user(char) {
+                var filtro = 'qwertyuiopasdfghjklñzxcvbnm1234567890_';
+                var array = filtro.split('');
+                return array.includes(char);
+            }
+            function pass(char) {
+                var filtro = 'QWERTYUIOPASDFGHJKLÑZXCVBNMqwertyuiopasdfghjklñzxcvbnm1234567890_@';
                 var array = filtro.split('');
                 return array.includes(char);
             }
 
-            function comprobar(string) {
+            function comprobar(string, b) {
                 var boo = false;
-                for (var i = 0; i < string.length; i++) {
-                    boo = NumText(string.charAt(i));
+                if (b) {
+                    for (var i = 0; i < string.length; i++) {
+                        boo = user(string.charAt(i));
+                    }
+                } else {
+                    for (var i = 0; i < string.length; i++) {
+                        boo = pass(string.charAt(i));
+                    }
                 }
                 return boo;
             }
 
-            //console.log(comprobar(usuario) && comprobar(contra));
-
-            if (!comprobar(usuario) || !comprobar(contra)) {
+            if (!comprobar(usuario, true) || !comprobar(contra, false)) {
                 alert('Caracteres no permitidos encontrados');
             } else {
                 alert('Lo has logrado');
             }
-        }
+        }   
     </script>
 </body>
 
