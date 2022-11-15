@@ -16,38 +16,83 @@
         <label for="pass">Contraseña:</label>
         <input type="password" name="contra" id="contra">
         <br>
-        <input type="button" value="Enviar" onclick="todo()">
+        <input type="button" value="Enviar" onclick="main()">
         <br>
     </form>
 
     <script>
 
-        function todo() {
+        function main() {
             let usuario = document.getElementById('usuario').value;
             let contra = document.getElementById('contra').value;
 
-            function NumText(char) {
-                var filtro = 'qwertyuiopasdfghjklñzxcvbnm1234567890._\'\"\\';
+            function lowerCase(char) {
+                var filtro = 'qwertyuiopasdfghjklñzxcvbnm';
                 var array = filtro.split('');
                 return array.includes(char);
             }
 
-            function comprobar(string) {
+            function upperCase(char) {
+                var filtro = 'QWERTYUIOPASDFGHJKLÑZXCVBNM';
+                var array = filtro.split('');
+                return array.includes(char);
+            }
+
+            function numb(char) {
+                var filtro = '1234568790';
+                var array = filtro.split('');
+                return array.includes(char);
+            }
+
+            function special(char) {
+                var filtro = '._';
+                var array = filtro.split('');
+                return array.includes(char);
+            }
+            function comprobar(string, num) {
                 var boo = false;
+
                 for (var i = 0; i < string.length; i++) {
-                    boo = NumText(string.charAt(i));
+                    switch (num) {
+                        case 0:
+                            boo = lowerCase(string.charAt(i));
+                            break;
+                        case 1:
+                            boo = upperCase(string.charAt(i));
+                            break;
+                        case 2:
+                            boo = numb(string.charAt(i));
+                            break;
+                        case 3:
+                            boo = special(string.charAt(i));
+                            break;
+                    }
                 }
                 return boo;
             }
 
-            //console.log(comprobar(usuario) && comprobar(contra));
-
-            if (!comprobar(usuario) || !comprobar(contra)) {
-                alert('Caracteres no permitidos encontrados');
-            } else {
-                alert('Lo has logrado');
+            if (!comprobar(usuario, 0)) {
+                document.write('Usuario: Falta una minúscula <br>');
             }
-        }
+            if (!comprobar(usuario, 2)) {
+                document.write('Usuario: Falta un número <br>');
+            }
+            if (!comprobar(usuario, 3)) {
+                document.write('Usuario: Falta un caracter especial <br>');
+            }
+            if (!comprobar(contra, 0)) {
+                document.write('Contraseña: Falta una minúscula <br>');
+            }
+            if (!comprobar(contra, 1)) {
+                document.write('Contraseña: Falta una mayúscula <br>');
+            }
+            if (!comprobar(contra, 2)) {
+                document.write('Contraseña: Falta un número <br>');
+            }
+            if (!comprobar(contra, 3)) {
+                document.write('Contraseña: Falta un caracter especial <br>');
+            }
+        }   
     </script>
 </body>
 
