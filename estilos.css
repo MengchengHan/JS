@@ -1,0 +1,15 @@
+body {
+    background-color: aliceblue;
+}
+
+input[type="text"]{
+    width: 40px;
+}
+
+#form {
+    width: fit-content;
+    border: 1px solid;
+    padding-top: 100px;
+    margin: auto;
+    min-height: 300px;
+}

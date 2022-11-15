@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="estilos.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="form">
+        <form>
+            <input type="text" id="n1">
+            <input type="text" id="n2">
+            <input type="text" id="n3">
+            <input type="text" id="n4">
+            <input type="text" id="n5">
+            <input type="text" id="n6">
+            <input type="submit" id="enviar">
+        </form>
+    </div>
+</body>
+<script>
+    {
+        const array = [];
+        const ordenado = [];
+        for (var i = 0; i < 49; i++) {
+            array[i] = i + 1;
+        }
+
+        for (var r = 0; r < 50; r++) {
+            const shuffledArray = array.sort((a, b) => 0.5 - Math.random());
+            for (var i = 0; i < 6; i++) {
+                ordenado[i] = shuffledArray[i];
+            }
+            ordenado.sort();
+        }
+        ordenado.forEach(element => document.write(element + " "));
+
+        document.getElementById('enviar').addEventListener('click', function () {
+            n1 = document.getElementById('n1').value;
+            n2 = document.getElementById('n2').value;
+            n3 = document.getElementById('n3').value;
+            n4 = document.getElementById('n4').value;
+            n5 = document.getElementById('n5').value;
+            n6 = document.getElementById('n6').value;
+            let recibido = [n1, n2, n3, n4, n5, n6];
+
+            if (recibido.sort().join(',') === ordenado.sort().join(',')) {
+                document.write('Felicidades lo has logrado!');
+            } else {
+                document.write('Mala suerte!');
+            }
+        });
+
+    }
+</script>
+
+
+</html>
