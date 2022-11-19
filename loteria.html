@@ -5,102 +5,87 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="estilos.css">
-    <title>Document</title>
-</head>
-
-<body>
-    <div id="btn-group">
-        <button class="boton" onclick="inFunction(this)">1</button>
-        <button class="boton" onclick="inFunction(this)">2</button>
-        <button class="boton" onclick="inFunction(this)">3</button>
-        <button class="boton" onclick="inFunction(this)">4</button>
-        <button class="boton" onclick="inFunction(this)">5</button>
-        <button class="boton" onclick="inFunction(this)">6</button>
-        <button class="boton" onclick="inFunction(this)">7</button>
-        <button class="boton" onclick="inFunction(this)">8</button>
-        <button class="boton" onclick="inFunction(this)">9</button>
-        <button class="boton" onclick="inFunction(this)">10</button>
-        <button class="boton" onclick="inFunction(this)">11</button>
-        <button class="boton" onclick="inFunction(this)">12</button>
-        <button class="boton" onclick="inFunction(this)">13</button>
-        <button class="boton" onclick="inFunction(this)">14</button>
-        <button class="boton" onclick="inFunction(this)">15</button>
-        <button class="boton" onclick="inFunction(this)">16</button>
-        <button class="boton" onclick="inFunction(this)">17</button>
-        <button class="boton" onclick="inFunction(this)">18</button>
-        <button class="boton" onclick="inFunction(this)">19</button>
-        <button class="boton" onclick="inFunction(this)">20</button>
-        <button class="boton" onclick="inFunction(this)">21</button>
-        <button class="boton" onclick="inFunction(this)">22</button>
-        <button class="boton" onclick="inFunction(this)">23</button>
-        <button class="boton" onclick="inFunction(this)">24</button>
-        <button class="boton" onclick="inFunction(this)">25</button>
-        <button class="boton" onclick="inFunction(this)">26</button>
-        <button class="boton" onclick="inFunction(this)">27</button>
-        <button class="boton" onclick="inFunction(this)">28</button>
-        <button class="boton" onclick="inFunction(this)">29</button>
-        <button class="boton" onclick="inFunction(this)">30</button>
-        <button class="boton" onclick="inFunction(this)">31</button>
-        <button class="boton" onclick="inFunction(this)">32</button>
-        <button class="boton" onclick="inFunction(this)">33</button>
-        <button class="boton" onclick="inFunction(this)">34</button>
-        <button class="boton" onclick="inFunction(this)">35</button>
-        <button class="boton" onclick="inFunction(this)">36</button>
-        <button class="boton" onclick="inFunction(this)">37</button>
-        <button class="boton" onclick="inFunction(this)">38</button>
-        <button class="boton" onclick="inFunction(this)">39</button>
-        <button class="boton" onclick="inFunction(this)">40</button>
-        <button class="boton" onclick="inFunction(this)">41</button>
-        <button class="boton" onclick="inFunction(this)">42</button>
-        <button class="boton" onclick="inFunction(this)">43</button>
-        <button class="boton" onclick="inFunction(this)">44</button>
-        <button class="boton" onclick="inFunction(this)">45</button>
-        <button class="boton" onclick="inFunction(this)">46</button>
-        <button class="boton" onclick="inFunction(this)">47</button>
-        <button class="boton" onclick="inFunction(this)">48</button>
-        <button class="boton" onclick="inFunction(this)">49</button>
-    </div>
-    <button id="enviar">Probar suerte</button>
-    <br>
-</body>
-<script>
-    {
+    <link rel="stylesheet" href="styles_loteria.css">
+    <title>Lotería</title>
+    <script>
         const array = [];
-        const ordenado = [];
+        const ganador = [];
         for (var i = 0; i < 49; i++) {
             array[i] = i + 1;
         }
 
         for (var r = 0; r < 50; r++) {
-            const shuffledArray = array.sort((a, b) => 0.5 - Math.random());
+            array.sort((a, b) => 0.5 - Math.random());
             for (var i = 0; i < 6; i++) {
-                ordenado[i] = shuffledArray[i];
+                ganador[i] = array[i];
             }
-            ordenado.sort();
+            ganador.sort();
         }
-        ordenado.forEach(element => document.write(element + " "));
 
-        document.getElementById('enviar').addEventListener('click', function () {
-
-            if (recibido.sort().join(',') === ordenado.sort().join(',')) {
-                document.write('Felicidades lo has logrado!');
-            } else {
-                document.write('Mala suerte!');
+        function shuffleArray() {
+            for(var i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + Math.random()));
+                const temp = array[i];
+                array[i] = array[j];
+                array[j]  = temp;
             }
+            return array;
+        }
+        function compareNumbers(a, b) {
+            return a - b;
+        }
 
-        });
-        
-        var arr = new Array(6);
-        function inFunction(item) {
-            var btnValue = item.innerText;
-            arr = btnValue;
-            console.log(btnValue);   
-        }   
+        function getArraySorted() {
+            let arr = [];
+            for (var i = 0; i < 6; i++) {
+                arr.push(array[i]);
+            }
+            return arr.sort(compareNumbers);
+        }
 
-       
+        function printLinea(fila) {
+            shuffleArray();
+            for (var i = 0; i < 6; i++) {
+                document.write("<input class=" + "fila" + fila + "_" + i + " type='number' min='1' max='49' value=" + getArraySorted()[i] + ">");
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <span><h1 id="msg"></h1></span>
+    <div id="container1">
+        <div id="linea0">
+            <script>
+                printLinea(0);
+            </script>
+        </div>
+        <button id="btn_linea0" onclick="comprobar(this.id)">Probar suerte</button>
+    </div>
+
+    <script>
+        for (var i = 1; i <= 50; i++) {
+            document.write("<div id=linea" + i + ">");
+            printLinea(i);
+            document.write("<button id=btn_linea" + i + " onclick='comprobar(this.id)'>Probar suerte</button>");
+            document.write("</div>");
+        }
+    </script>
+    </div>
+</body>
+<script>
+    function comprobar(id) {
+        id = id.substr(4)
+        let seleccionado = [];
+        for (var i = 0; i < 6; i++) {
+            seleccionado.push(document.getElementById(id).getElementsByTagName('input').item(i).value);
+        }
+        if(JSON.stringify(array) === JSON.stringify(seleccionado)) {
+            document.getElementById("msg").innerHTML="Has ganado la lotería!";
+        } else {
+            document.getElementById("msg").innerHTML="Más suerte la próxima!";
+        }
     }
 </script>
-
 
 </html>
