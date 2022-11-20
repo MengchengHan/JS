@@ -5,30 +5,81 @@ input::-webkit-inner-spin-button {
   margin: 0;
 }
 
-
 /* Firefox */
 input[type=number] {
   -moz-appearance: textfield;
 }
 
+li{
+  margin:0px;
+  list-style: none;
+  float: left;
+  line-height: 50px;
+  margin-left: 30px;
+}
+
+li a {
+  color: white;
+  
+}
+
+header {
+  display: flex;
+  width: 100%;
+  color:white;
+  background-color: #222;
+  border-radius: 5px;
+}
+
 body {
   background-color: rgb(255, 255, 255);
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 input[type='number'] {
   border: 1px solid gray;
   text-align: center;
+  margin: 10px;
+  height: 33px;
+  border-radius: 5px;
 }
 
 #container1 {
-  width: fit-content;
-  border: 1px solid black;
+  margin: auto;
+  width: 50%;
+  min-height: 150px;
+  align-items: center;
   display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+  box-shadow: 2px 2px 15px gray;
 }
 
-#item1 {
-  width: fit-content;
-  border: 1px solid black;
-} 
+button {
+  background: rgb(66, 133, 245);
+  color: white;
+  border-radius: 5px;
+  border: 1px solid;
+  height: 35px;
+}
+
+button:hover {
+  background-color: rgb(58, 117, 218);
+  cursor: pointer;
+}
+
+button:active {
+  background-color: rgb(48, 108, 208);
+}
 
 
+#container2 {
+  margin: auto;
+  width: 50%;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 30px;
+  box-shadow: 2px 2px 15px gray;
+}

@@ -23,11 +23,11 @@
         }
 
         function shuffleArray() {
-            for(var i = array.length - 1; i > 0; i--) {
+            for (var i = array.length - 1; i > 0; i--) {
                 const j = Math.floor(Math.random() * (i + Math.random()));
                 const temp = array[i];
                 array[i] = array[j];
-                array[j]  = temp;
+                array[j] = temp;
             }
             return array;
         }
@@ -53,16 +53,30 @@
 </head>
 
 <body>
-    <span><h1 id="msg"></h1></span>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="loteria.html">La Primitiva</a></li>
+                <li><a href="loteria.html">El Euromillón    </a></li>
+                <li><a href="loteria.html">La Quiniela</a></li>
+                <li><a href="loteria.html">El Eurobillón</a></li>
+            </ul>
+        </nav>
+    </header>
+    <span>
+        <h1 id="msg"></h1>
+    </span>
     <div id="container1">
         <div id="linea0">
+            <p>Juega nuestro número del día:</p>
             <script>
                 printLinea(0);
             </script>
+            <button id="btn_linea0" onclick="comprobar(this.id)">Probar suerte</button>
         </div>
-        <button id="btn_linea0" onclick="comprobar(this.id)">Probar suerte</button>
     </div>
 
+    <div id="container2">
     <script>
         for (var i = 1; i <= 50; i++) {
             document.write("<div id=linea" + i + ">");
@@ -80,10 +94,10 @@
         for (var i = 0; i < 6; i++) {
             seleccionado.push(document.getElementById(id).getElementsByTagName('input').item(i).value);
         }
-        if(JSON.stringify(array) === JSON.stringify(seleccionado)) {
-            document.getElementById("msg").innerHTML="Has ganado la lotería!";
+        if (JSON.stringify(array) === JSON.stringify(seleccionado)) {
+            document.getElementById("msg").innerHTML = "Has ganado la lotería!";
         } else {
-            document.getElementById("msg").innerHTML="Más suerte la próxima!";
+            document.getElementById("msg").innerHTML = "Más suerte la próxima!";
         }
     }
 </script>
