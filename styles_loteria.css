@@ -10,6 +10,18 @@ input[type=number] {
   -moz-appearance: textfield;
 }
 
+#mensajes {
+  width: fit-content;
+  display: flex;
+  margin: auto;
+  flex-direction: column-reverse;
+  align-items: center;
+}
+
+#mensajes h1 {
+  
+}
+
 li{
   margin:0px;
   list-style: none;
