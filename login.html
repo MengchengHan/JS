@@ -11,16 +11,22 @@
 <body>
     <form name="login">
         <label for="user">Usuario:</label>
-        <input type="text" name="usuario" id="usuario">
+        <input type="text" name="usuario" id="usuario" placeholder="usuario">
         <br>
         <label for="pass">Contraseña:</label>
-        <input type="password" name="contra" id="contra">
+        <input type="password" name="contra" id="contra" placeholder="contraseña">
         <br>
         <input type="button" value="Enviar" onclick="main()">
         <br>
     </form>
 
+    <a href="loteria.html">Entrar</a>
+
     <script>
+
+        function myFunction() {
+            window.location= "loteria.html";
+        }
 
         function main() {
             let usuario = document.getElementById('usuario').value;
@@ -77,23 +83,8 @@
             if (!comprobar(usuario, 0)) {
                 document.write('Usuario: Falta una minúscula <br>');
             }
-            if (!comprobar(usuario, 2)) {
-                document.write('Usuario: Falta un número <br>');
-            }
-            if (!comprobar(usuario, 3)) {
-                document.write('Usuario: Falta un caracter especial <br>');
-            }
             if (!comprobar(contra, 0)) {
                 document.write('Contraseña: Falta una minúscula <br>');
-            }
-            if (!comprobar(contra, 1)) {
-                document.write('Contraseña: Falta una mayúscula <br>');
-            }
-            if (!comprobar(contra, 2)) {
-                document.write('Contraseña: Falta un número <br>');
-            }
-            if (!comprobar(contra, 3)) {
-                document.write('Contraseña: Falta un caracter especial <br>');
             }
         }
     </script>
