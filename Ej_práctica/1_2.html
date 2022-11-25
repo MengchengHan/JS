@@ -10,21 +10,22 @@
 
 <body>
     <p id="msg"></p>
-    <form>
-        <input type="text" id="num" oninput="myF(this.value);">
-    </form>
 </body>
-
 <script>
+    for (let i = 0; i < 500; i++) {
+        num = Math.floor(Math.random() * 10000 + 1);
+        document.write(num + " " + myF(num) + "<br>");
+    }
+
     function myF(num) {
-        // num = document.getElementById("num").value;
-        if (num != "") {
+        if (num != null && num != "") {
             if (num % 2 == 0) {
-                document.getElementById("msg").innerHTML = "PAR";
+                return "PAR";
             } else {
-                document.getElementById("msg").innerHTML = "IMPAR";
+                return "IMPAR";
             }
         }
+        return null;
     }
 </script>
 

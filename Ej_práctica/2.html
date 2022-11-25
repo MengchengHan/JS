@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function dibujaTabla(filas = 4, columnas = 4) {
+            document.write("<table border='1' cellpadding='10' cellspacing='0'>");
+            for (let i = 1; i <= filas; i++) {
+                document.write("<tr>");
+                for (let j = 1; j <= columnas; j++) {
+                    document.write("<td>");
+                    document.write("celda " + i + "-" + j);
+                    document.write("</td>");
+                }
+                document.write("</tr>");
+
+            }
+            document.write("</table>");
+        }
+
+        function getValues(id) {
+
+            const value = document.getElementById(id).value;
+            if (value == '' || value == "") {
+                return undefined;
+            }
+            return value;
+        }
+    </script>
+</head>
+
+<body>
+    <input type="text" id="filas" placeholder="Filas">
+    <input type="text" id="columnas" placeholder="Columnas">
+    <button id="enviar" onclick="dibujaTabla(getValues('filas'),getValues('columnas'))">Dibujar tabla</button>
+
+</body>
+</html>
