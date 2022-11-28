@@ -10,19 +10,17 @@
 
 <body>
     <script>
-        var fibonacci_series = function (n) {
-            if (n === 1) {
+        let fibonacci_series = function (n) {
+            if (n == 2) {
                 return [0, 1];
-            }
-            else {
-                var array = fibonacci_series(n - 1);
+            } else {
+                let array = fibonacci_series(n - 1);
                 array.push(array[array.length - 1] + array[array.length - 2]);
                 return array;
             }
         };
 
         n = 9;
-        
         console.log(fibonacci_series(n));
     </script>
 </body>
