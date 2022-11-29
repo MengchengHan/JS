@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function anagrama(str1, str2) {
+            str1 = str1.toLowerCase().split("");
+            str2 = str2.toLowerCase().split("");
+            let boo = true;
+            
+            console.log(str1.length);
+            console.log(str2.length);
+
+
+            if (str1.length == str2.length){
+                for (let i = 0; i < str1.length; i++) {
+                    if (str2.includes(str1[i])) {
+                        str2.splice(str2.indexOf(str1[i]), 1);
+                    } else {
+                        return false;
+                    }
+                }
+                return boo;
+            } else {
+                return false;
+            }
+        }
+
+        console.log(anagrama("estanco", "acentos"));
+    </script>
+</body>
+
+</html>
