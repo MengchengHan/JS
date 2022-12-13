@@ -6,20 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script>
-        array = [];
-        function check(){   
-            array.push(document.getElementById("palabra").textContent);
-            array.sort();
-            document.write(array);
-        }
+        let fibonacci_series = function (n) {
+            if (n == 2) {
+                return [0, 1];
+            } else {
+                let array = fibonacci_series(n - 1);
+                array.push(array[array.length - 1] + array[array.length - 2]);
+                return array;
+            }
+        };
+
+        n = 9;
+        console.log(fibonacci_series(n));
     </script>
 </head>
 <body>
-    <form>
-        <input type="text" id="palabra" placeholder="Palabra">
-        <button id="enviar" onclick="check()">Enviar</button>
-    </form>
-
     <p id="ordenados"></p>
 </body>
 </html>
