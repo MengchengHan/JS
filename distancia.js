@@ -46,12 +46,10 @@ class Punto {
     }
 }
 
-const p = new Punto(-4, 5);
-const q = new Punto(3, 6);
+const p = new Punto(-1, 0);
+const q = new Punto(1, 1);
 
 console.log(p.obtenerDistancia(q));
 r = p.copia();
-console.log(r.iguales(p))
-console.log(r.toString())
-d = new Date();
-console.log(d.toISOString());
+console.log(r.iguales(p));
+console.log(r.toString());
