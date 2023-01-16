@@ -8,7 +8,7 @@
     <title>Document</title>
     <script>
         function tamañoVentana() {
-            const dimensiones = [];
+            let dimensiones = [];
             dimensiones = [window.innerWidth, window.innerHeight];
             return dimensiones;
         }
@@ -18,15 +18,83 @@
                 clientX,
                 clientY
             } = event
-            console.log(clientX, clientY)
-        })
 
-        
+            let space = tamañoVentana();
+            let posX = "", posY = "", zona = 0;
+
+
+            if (clientY <= space[0] / 2) {
+                posY = "Arriba";
+                if (clientX <= space[1] / 2) {
+                    posX += "izquierda";
+                    zona = 1;
+                } else {
+                    posX += "derecha";
+                    zona = 2;
+                }
+                console.log(posY + " " + posX);
+            } else {
+                posY = "Abajo";
+                if (clientX <= space[1] / 2) {
+                    posX += "izquierda";
+                    zona = 3;
+                } else {
+                    posX += "derecha";
+                    zona = 4;
+                }
+                console.log(posY + " " + posX);
+            }
+
+        })
     </script>
+    <style>
+        * {
+            margin: 0;
+        }
+
+        html,
+        body {
+            height: 100%;
+        }
+
+        body {
+            display: grid;
+            grid-template-columns: auto auto;
+            grid-template-rows: auto auto;
+        }
+
+        .zones {
+            border: 1px solid black;
+            min-width: 50%;
+        }
+
+        #zone1:hover {
+            background-color: #6C567B;
+        }
+
+        #zone2:hover {
+            background-color: #C06C84;
+        }
+
+        #zone3:hover {
+            background-color: #F67280;
+        }
+
+        #zone4:hover {
+            background-color: #F8B195;
+        }
+    </style>
 </head>
 
 <body>
-
+    <div class="zones" id="zone1">
+    </div>
+    <div class="zones" id="zone2">
+    </div>
+    <div class="zones" id="zone3">
+    </div>
+    <div class="zones" id="zone4">
+    </div>
 </body>
 
-</html>
+</html
