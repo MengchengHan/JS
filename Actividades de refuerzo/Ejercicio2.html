@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function cambia(){
+            window.open("https://www.sintesis.com");
+        }
+        
+        function genera(){
+            document.getElementById("lap").innerText = 'TEXTO GENERADO';
+        }
+
+    </script>
+</head>
+
+<body>
+    <button onclick="cambia()">Página de síntesis</button>
+    <button onclick="genera()">Genera texto</button>
+    <p id="lap"></p>
+</body>
+
+</html>

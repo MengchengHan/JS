@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let win;
+
+        function openWindow() {
+            win = window.open("", "", "width=400, height=200");
+        }
+
+        function closeWindow() {
+            win.close();
+        }
+
+        function moveWin() {
+            win.moveTo(500, 500);
+        }
+
+        function resizeWin() {
+            win.resizeTo(500, 600);
+        }
+    </script>
+</head>
+
+<body>
+    <button onclick="openWindow()">Abre nueva pestaña</button>
+    <br>
+    <button onclick="closeWindow()">Cierra pestaña</button>
+    <br>
+    <button onclick="moveWin()">Move "myWindow"</button>
+    <br>
+    <button onclick="resizeWin()">Redimesiona ventana</button>
+</body>
+
+</html>
