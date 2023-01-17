@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function checkSEO() {
+            let item_h1 = document.getElementsByTagName("h1");
+            let item_p = document.getElementsByTagName("p");
+            let item_img = document.getElementsByTagName("img");
+
+            if ((item_h1.length > 0 && item_img.length) && item_p.length > 2) {
+                return document.getElementById("elspan").innerHTML = "Es un buen SEO";
+            } else {
+                return document.getElementById("elspan").innerHTML = "No es un buen SEO";
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <button onclick="checkSEO()">Comprueba si es un buen SEO</button>
+    <br>
+    <h1>GOOLGE</h1>
+    <p></p>
+    <p></p>
+    <p></p>
+    <img src="" alt=""><img src="" alt="">
+    <span id="elspan"></span>
+</body>
+
+</html>

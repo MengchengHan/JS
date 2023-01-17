@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="eldiv">
+        <h1>Enlaces</h1>
+
+        <a href="www.marca.com">Marca</a>
+        <a href="www.myfpschool.com">Myfpschool</a>
+        <a href="www.google.com">Google</a>
+        <a href="www.google.com">Google</a>
+        <a href="www.myfpschool.com">Myfpschool</a>
+        <a href="www.myfpschool.com">Myfpschool</a>
+
+        <p id="myfp"></p>
+        <p></p>
+    </div>
+</body>
+<script>
+    let enlaces = document.getElementById("eldiv").getElementsByTagName("a");
+    let contador = 0;
+
+    for (let i = 0; i < enlaces.length; i++) {
+        if (enlaces[i].href.indexOf("myfpschool") != -1) {
+            contador++;
+        }
+    }
+
+    document.getElementById("myfp").innerHTML = "Numero enlaces a Myfp: " + contador;
+
+</script>
+
+</html>
