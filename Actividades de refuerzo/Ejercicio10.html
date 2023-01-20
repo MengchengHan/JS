@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #area {
+            border: 2px solid black;
+            width: 50%;
+            height: 300px;
+            margin: 0 auto;
+            margin-top: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="area" onclick="clickeado()" onmouseover="ov()" onmouseleave="ido()">
+    </div>
+    <script>
+        function clickeado() {
+            document.getElementById("lap").innerHTML = "Has hecho click"
+            console.log("Click")
+        }
+        
+        function ov() {
+            document.getElementById("lap").innerHTML = "Estás encima"
+            console.log("Mouse over")
+        }
+        
+        function ido() {
+            document.getElementById("lap").innerHTML = "Te has largado"
+            console.log("Mouse leaving")
+        }
+    </script>
+    <p id="lap"></p>
+</body>
+
+</html>
