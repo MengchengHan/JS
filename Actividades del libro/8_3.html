@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #capa {
+            position: fixed;
+            width: 50%;
+            height: 50%;
+            left: 25%;
+            top: 25%;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="capa"></div>
+</body>
+<script>
+    let capa = document.getElementById("capa");
+    capa.addEventListener("mouseover", Event => {
+        capa.style.backgroundColor = "green";
+    });
+    capa.addEventListener("mouseleave", Event => {
+        capa.style.backgroundColor = "transparent";
+    });
+    capa.addEventListener("mousedown", Event => {
+        if (Event.button == 0) {
+            capa.style.backgroundColor = "red";
+        } else if (Event.button == 1) {
+            capa.style.backgroundColor = "black";
+        } else if (Event.button == 2) {
+            capa.style.backgroundColor = "blue";
+        }
+    });
+</script>
+
+</html>

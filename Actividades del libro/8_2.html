@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #imagen {
+            background-color: black;
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-size: cover;
+            background-position: center;
+        }
+
+        h1 {
+            color: aliceblue;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body id="body">
+    <div id="imagen">
+        <h1 id="h1">Pulsa Alt + F12 para cambiar la imagen</h1>
+    </div>
+</body>
+<script>
+    document.body.addEventListener("keydown", function (ev) {
+        if (ev.altKey) {
+            let capa = document.getElementById("imagen");
+            capa.style.backgroundImage = "url('img.jpg')";
+            document.getElementById("h1").innerHTML = "";
+        }
+    })
+
+    document.body.addEventListener("keyup", function (ev) {
+        if (ev.code = "alt") {
+            let capa = document.getElementById("imagen");
+            capa.style.backgroundImage = "";
+            capa.style.backgroundColor = "black";
+            document.getElementById("h1").innerHTML = "Pulsa Alt + F12 para cambiar la imagen";
+        }
+    })
+</script>
+
+</html>
