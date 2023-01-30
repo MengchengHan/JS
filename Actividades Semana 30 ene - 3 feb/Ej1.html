@@ -1,0 +1,36 @@
+<DOCTYPE html>
+    <html lang="es">
+
+    <head>
+        <meta charset="UTF-8">
+        <title> Imagen del diac</title>
+    </head>
+
+    <body>
+        <main>
+            <p>Esperando datos... </p>
+        </main>
+        <script>
+            var main = document.querySelector("main"); //Capa main
+            fetch("https://source.unsplash.com/random")
+                .then(response => {
+                    if (response.ok) {
+                        return response.blob();
+                    } else {
+                        throw new Error("Los datos no llegaron bien");
+                    }
+                }).then(blob => {
+                    console.log(blob.type);
+                    let imagen = document.createElement("img");
+                    imagen.setAttribute("src", URL.createObjectURL(blob));
+                    main.innerHTML = "";
+                    main.appendChild(imagen);
+                })
+                .catch(error => {
+                    main.textContent = error;
+                });
+
+        </script>
+    </body>
+
+    </html>
