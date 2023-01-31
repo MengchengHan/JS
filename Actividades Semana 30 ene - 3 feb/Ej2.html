@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            font-family: sans-serif;
+        }
+
+        main{
+            text-align: center;
+        }
+        p{
+            margin: 0;
+        }
+        .error{
+            background-color: red;
+            color: white;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <main></main>
+    <script>
+        var main = document.querySelector("main");
+
+        const url = "https://randomuser.me/api/";
+        fetch(url)
+        .then((resp) => resp.json())
+        .then(data => {
+            let datos = data.results[0];
+            let foto = datos.picture.large;
+            let mail = datos.email;
+            let nombre = datos.name.first;
+            let apellido = datos.name.last;
+            let calle = datos.location.street.name + " " + datos.location.street.number;
+            let ciudad = datos.location.city;
+            let estado = datos.location.state;
+
+            main.innerHTML = `<figure>` + `<img src = '${foto}'>` + `</figure>` + 
+            `<p>${nombre} ${apellido}</p>` +
+            `<p>Email: ${mail}</p>` +
+            `<p>${calle}</p>` + 
+            `<p>${ciudad} (${estado.toUpperCase()})</p>`;
+        })
+        .catch(error=>{
+            main.innerHTML= `<p class ='error'>${error}</p>`
+        });
+    </script>
+</body>
+
+</html>

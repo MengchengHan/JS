@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            font-family: sans-serif;
+        }
+
+        main {
+            text-align: center;
+        }
+
+        main div {
+            display: inline-block;
+            padding: .3em;
+        }
+
+        main div:nth-of-type(odd) {
+            background-color: lightblue;
+        }
+
+        main div:hover {
+            background-color: rgb(88, 230, 230);
+        }
+
+        p {
+            margin: 0;
+        }
+
+        .error {
+            background-color: red;
+            color: white;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <main></main>
+    <script>
+        function primeraMayus (texto) {
+            return texto[0].toUpperCase() + texto.slice(1).toLowerCase();
+        }
+        
+        function generarEventoBoton(capaUsuario) {
+            let boton = capaUsuario.querySelector("button");
+            boton.addEventListener("click", (ev) => {
+                capaUsuario.textContent = "Esperando usuario nuevo...";
+                fetch("https://randomuser.me/api")
+                    .then(resp => resp.json())
+                    .then(data => {
+                        let usuario = data.results[0];
+                        rellenaUsuario(capaUsuario, usuario);
+                        generarEventoBoton(capaUsuario);
+                    });
+                .catch (error=> {
+                    main.innerHTML = `<p class ='error'>${error}</p>`
+                });
+        });
+        }
+
+        function rellenaUsuario(capaUsuario, usuario) {
+            let foto = usuario.picture.large;
+            let mail = usuario.email;
+            let nombre = usuario.name.first;
+            let apellido = usuario.name.last
+            let calle = usuario.location.street.name + " " + usuario.location.street.number;
+            let ciudad = usuario.location.city;
+            let estado = usuario.location.state;
+
+            capaUsuario.innerHTML = `<figure>` + `<img src = '${foto}'>` + `</figure>` +
+                `<p>${nombre} ${apellido}</p>` +
+                `<p>Email: ${mail}</p>` +
+                `<p>${calle}</p>` +
+                `<p>${primeraMayus(ciudad)},  (${primeraMayus(estado)})</p>`;
+            `<p><button>Cambiar</button></p>`
+        }
+
+        var main = document.querySelector("main");
+        main.textContent = "Esperando usuarios...";
+
+        fetch("https://randomuser.me/api/?results=10");
+        .then((resp) => resp.json())
+            .then(data => {
+                let datos = data.results;
+                main.textContent = "";
+                for (let usuarios of datos){
+                    let divUsuario = document.createElement("div");
+                    rellenaUsuario(divUsuario, usuario);
+                    generarEventoBoton(divUsuario);
+                    main.appendChild(divUsuario);
+                }
+            })
+            .catch(error => {
+                main.innerHTML = `<p class = 'error'>${error}</p>`
+            });
+    </script>
+</body>
+
+</html>
