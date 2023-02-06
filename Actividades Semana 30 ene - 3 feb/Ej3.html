@@ -43,25 +43,8 @@
 <body>
     <main></main>
     <script>
-        function primeraMayus (texto) {
+        function primeraMayus(texto) {
             return texto[0].toUpperCase() + texto.slice(1).toLowerCase();
-        }
-        
-        function generarEventoBoton(capaUsuario) {
-            let boton = capaUsuario.querySelector("button");
-            boton.addEventListener("click", (ev) => {
-                capaUsuario.textContent = "Esperando usuario nuevo...";
-                fetch("https://randomuser.me/api")
-                    .then(resp => resp.json())
-                    .then(data => {
-                        let usuario = data.results[0];
-                        rellenaUsuario(capaUsuario, usuario);
-                        generarEventoBoton(capaUsuario);
-                    });
-                .catch (error=> {
-                    main.innerHTML = `<p class ='error'>${error}</p>`
-                });
-        });
         }
 
         function rellenaUsuario(capaUsuario, usuario) {
@@ -73,23 +56,43 @@
             let ciudad = usuario.location.city;
             let estado = usuario.location.state;
 
-            capaUsuario.innerHTML = `<figure>` + `<img src = '${foto}'>` + `</figure>` +
+            capaUsuario.innerHTML =
+                `<figure>` +
+                `<img src = '${foto}' alt='foto'>` +
+                `</figure>` +
                 `<p>${nombre} ${apellido}</p>` +
                 `<p>Email: ${mail}</p>` +
                 `<p>${calle}</p>` +
-                `<p>${primeraMayus(ciudad)},  (${primeraMayus(estado)})</p>`;
-            `<p><button>Cambiar</button></p>`
+                `<p>${primeraMayus(ciudad)} (${primeraMayus(estado)})</p>` +
+            `<p><button>Cambiar</button></p>`;
+        }
+
+        function generarEventoBoton(capaUsuario) {
+            let boton = capaUsuario.querySelector("button");
+            boton.addEventListener("click", (ev) => {
+                capaUsuario.textContent = "Esperando usuario nuevo...";
+                fetch("https://randomuser.me/api")
+                    .then(resp => resp.json())
+                    .then(data => {
+                        let usuario = data.results[0];
+                        rellenaUsuario(capaUsuario, usuario);
+                        generarEventoBoton(capaUsuario);
+                    })
+                    .catch(error => {
+                        main.innerHTML = `<p class ='error'>${error}</p>`
+                    });
+            });
         }
 
         var main = document.querySelector("main");
         main.textContent = "Esperando usuarios...";
 
-        fetch("https://randomuser.me/api/?results=10");
-        .then((resp) => resp.json())
+        fetch("https://randomuser.me/api?results=10")
+            .then((resp) => resp.json())
             .then(data => {
                 let datos = data.results;
                 main.textContent = "";
-                for (let usuarios of datos){
+                for (let usuario of datos) {
                     let divUsuario = document.createElement("div");
                     rellenaUsuario(divUsuario, usuario);
                     generarEventoBoton(divUsuario);
